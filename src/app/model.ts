@@ -3,7 +3,7 @@ export class OperationResult<TData> {
     success: boolean
     message: string
 
-    constructor(parameters) {
+    constructor() {
 
     }
 }
@@ -29,15 +29,12 @@ export interface IEntity {
 export class Pessoa implements IEntity {
     id = 0;
     nome = "";
-    dataNascimento;
-    cpf = ""
+    dataNascimento: Date;
+    cpf: string;
+    email: string;
 
-    email;
-
-
-    cidadeId = null;
-    cidade: Cidade;
-
+    cidadeId: number = null;
+    cidade: Cidade = null;
 
     constructor() {
 

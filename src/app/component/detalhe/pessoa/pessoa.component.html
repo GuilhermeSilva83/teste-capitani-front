@@ -17,7 +17,7 @@
 
         <mat-form-field class="row col-12">
             <mat-label>Nascimento</mat-label>
-            <input matInput [matDatepicker]="nascimento">
+            <input matInput [matDatepicker]="nascimento" name="nascimento" [(ngModel)]="pessoa.dataNascimento">
             <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
             <mat-datepicker #nascimento></mat-datepicker>
         </mat-form-field>

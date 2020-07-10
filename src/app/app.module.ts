@@ -1,9 +1,10 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
+import '@angular/common/locales/global/br';
 
 // Angular Material
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -46,7 +47,7 @@ import { AppComponent } from './app.component';
     MatSelectModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
