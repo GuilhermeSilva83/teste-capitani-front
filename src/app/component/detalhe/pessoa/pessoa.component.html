@@ -1,3 +1,58 @@
-<form class="example-form">
+<form class="example-form" #form (submit)="Salvar()">
+
+    <div class="col-6">
+
+        <mat-form-field class="row col-12">
+            <input matInput placeholder="Nome Completo" name="nome" [(ngModel)]="pessoa.nome">
+        </mat-form-field>
+
+
+        <mat-form-field class="row col-12">
+            <input matInput placeholder="email" name="email" [(ngModel)]="pessoa.email">
+        </mat-form-field>
+
+        <mat-form-field class="row col-12">
+            <input matInput placeholder="CPF" name="cpf" [(ngModel)]="pessoa.cpf">
+        </mat-form-field>
+
+        <mat-form-field class="row col-12">
+            <mat-label>Nascimento</mat-label>
+            <input matInput [matDatepicker]="nascimento">
+            <mat-datepicker-toggle matSuffix [for]="nascimento"></mat-datepicker-toggle>
+            <mat-datepicker #nascimento></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field class="row col-12">
+            <mat-label>Estados</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let es of estados" [value]="es.id">
+                    {{es.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="row col-12">
+            <mat-label>Cidades</mat-label>
+            <mat-select [(value)]="pessoa.cidadeId">
+                <mat-option *ngFor="let cid of cidades" [value]="cid.id">
+                    {{cid.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <!-- <mat-form-field class="row col-12">
+            <input matInput placeholder="CEP" name="" [(ngModel)]="pessoa.cep">
+            </mat-form-field> -->
+
+
+        <div class="row col-2">
+            <button class="btn-primary" type="submit">
+                Salvar
+            </button>
+        </div>
+
+    </div>
 
 </form>

@@ -8,16 +8,36 @@ export class OperationResult<TData> {
     }
 }
 
+export class Tipo implements IEntity {
+    constructor() {
+    }
+    id: any;
+    nome: string;
+}
+
+export class Cidade extends Tipo {
+    estadoId: 0;
+    constructor() {
+        super();
+    }
+}
+
 export interface IEntity {
     id: any;
 }
 
 export class Pessoa implements IEntity {
-    id;
-    nome;
+    id = 0;
+    nome = "";
     dataNascimento;
-    cpf;
-    cidadeId;
+    cpf = ""
+
+    email;
+
+
+    cidadeId = null;
+    cidade: Cidade;
+
 
     constructor() {
 

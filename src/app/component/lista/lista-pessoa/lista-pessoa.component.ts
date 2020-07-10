@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PessoaService } from 'src/app/services/pessoa.service';
 import { Pessoa } from "../../../model";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-pessoa',
@@ -11,7 +12,7 @@ export class ListaPessoaComponent implements OnInit {
 
 
 
-  constructor(private service: PessoaService) { }
+  constructor(private service: PessoaService, private router: Router) { }
 
   campos = ['id', 'nome', 'dataNascimento', 'email', 'cpf', 'actions'];
   lista: Pessoa[];
@@ -27,10 +28,13 @@ export class ListaPessoaComponent implements OnInit {
   }
 
   Excluir(id) {
+    // alert(id);
     this.service.DeleteById(id).then(result => {
       if (result.success) {
         this.Reload();
       }
     })
   }
+
+
 }

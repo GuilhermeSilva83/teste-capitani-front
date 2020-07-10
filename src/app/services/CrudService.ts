@@ -12,7 +12,12 @@ export class CrudService<TEntity extends IEntity> {
     }
 
     public async Save(e: TEntity): Promise<OperationResult<TEntity>> {
-        return await this.http.post<OperationResult<TEntity>>(this.url, e).toPromise();
+        if (e.id) {
+            return await this.http.put<OperationResult<TEntity>>(this.url + "/" + e.id.toString(), e).toPromise();
+        }
+        else {
+            return await this.http.post<OperationResult<TEntity>>(this.url, e).toPromise();
+        }
     }
 
     public async DeleteById(id): Promise<OperationResult<any>> {
