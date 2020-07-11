@@ -4,7 +4,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
-import '@angular/common/locales/global/br';
+import '@angular/common/locales/global/pt';
 
 // Angular Material
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,6 +13,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 
 // App
 import { MainMenuComponent } from './component/infrastructure/main-menu/main-menu.component';
@@ -40,14 +42,16 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    MatCardModule,
     MatInputModule,
+    MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
     MatSelectModule,
     MatTableModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

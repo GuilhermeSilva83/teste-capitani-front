@@ -16,9 +16,9 @@ import { CidadeService } from 'src/app/services/cidade.service';
 export class PessoaComponent implements OnInit {
 
   pessoa: Pessoa = new Pessoa();
-
   estados: Tipo[] = [];
   cidades: Tipo[] = [];
+
 
 
   constructor(private route: ActivatedRoute, private router: Router, private service: PessoaService, private estadoService: EstadoService, private cidadeService: CidadeService) {
@@ -30,11 +30,12 @@ export class PessoaComponent implements OnInit {
 
     if (id) {
       this.pessoa = await this.service.GetById(id);
+      this.cidades = await this.cidadeService.List();
     }
 
     this.estados = await this.estadoService.List();
 
-    this.cidades = await this.cidadeService.List();
+
 
   }
 
