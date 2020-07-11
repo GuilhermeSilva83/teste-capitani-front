@@ -27,6 +27,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
+// terceiros
+
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+
+import { ToastrModule } from 'ngx-toastr';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
+
 
 @NgModule({
   declarations: [
@@ -49,7 +61,9 @@ import { AppComponent } from './app.component';
     MatNativeDateModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    NgxMaskModule.forRoot(maskConfig),
+    ToastrModule.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]

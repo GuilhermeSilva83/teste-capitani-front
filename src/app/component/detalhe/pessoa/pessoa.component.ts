@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pessoa, Tipo } from 'src/app/model';
 import { PessoaService } from 'src/app/services/pessoa.service';
-import { debug } from 'console';
-import { map, switchMap } from 'rxjs/operators';
 import { EstadoService } from 'src/app/services/estado.service';
 import { CidadeService } from 'src/app/services/cidade.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,34 +20,38 @@ export class PessoaComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: PessoaService, private estadoService: EstadoService, private cidadeService: CidadeService) {
+  constructor(private route: ActivatedRoute, private router: Router, private service: PessoaService,
+    private estadoService: EstadoService, private cidadeService: CidadeService,
+    private toastr: ToastrService) {
   }
 
   async ngOnInit() {
+
+    this.estados = await this.estadoService.List();
 
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
 
     if (id) {
       this.pessoa = await this.service.GetById(id);
-      this.cidades = await this.cidadeService.List();
+      this.cidades = await this.cidadeService.ListarPorEstado(this.pessoa.estadoId);
     }
-
-    this.estados = await this.estadoService.List();
-
-
 
   }
 
   Salvar() {
+    this.pessoa.cidade = null;
     this.service.Save(this.pessoa).then(d => {
       if (d.success) {
         this.router.navigateByUrl('pessoa');
-      } else {
-
       }
     });
-
-
   }
+
+  async SelectionChangeEstado() {
+    this.pessoa.cidadeId = null;
+    this.cidades = await this.cidadeService.ListarPorEstado(this.pessoa.estadoId);
+  }
+
+
 
 }

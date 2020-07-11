@@ -1,6 +1,6 @@
-<mat-card>
+<mat-card class="container">
     <mat-card-header>
-        <mat-card-title>Cadastro de Pessoas</mat-card-title>
+        <mat-card-title>Cadastro de Pessoas - Detalhe</mat-card-title>
         <!-- <mat-card-subtitle></mat-card-subtitle> -->
     </mat-card-header>
     <mat-card-content>
@@ -14,11 +14,15 @@
 
 
                 <mat-form-field class="row col-12">
-                    <input matInput placeholder="email" name="email" [(ngModel)]="pessoa.email">
+                    <input matInput placeholder="E-mail" name="email" [(ngModel)]="pessoa.email">
                 </mat-form-field>
 
                 <mat-form-field class="row col-12">
-                    <input matInput placeholder="CPF" name="cpf" [(ngModel)]="pessoa.cpf">
+                    <input matInput placeholder="CPF" name="cpf" [(ngModel)]="pessoa.cpf" mask="000.000.000-00">
+                </mat-form-field>
+
+                <mat-form-field class="row col-12">
+                    <input matInput placeholder="CEP" name="cep" [(ngModel)]="pessoa.cep" mask="00000-000">
                 </mat-form-field>
 
                 <mat-form-field class="row col-12">
@@ -31,7 +35,7 @@
 
                 <mat-form-field class="row col-12">
                     <mat-label>Estados</mat-label>
-                    <mat-select>
+                    <mat-select [(value)]="pessoa.estadoId" (selectionChange)="SelectionChangeEstado()">
                         <mat-option *ngFor="let es of estados" [value]="es.id">
                             {{es.nome}}
                         </mat-option>
@@ -41,6 +45,7 @@
                 <mat-form-field class="row col-12">
                     <mat-label>Cidades</mat-label>
                     <mat-select [(value)]="pessoa.cidadeId">
+                        <mat-option>--</mat-option>
                         <mat-option *ngFor="let cid of cidades" [value]="cid.id">
                             {{cid.nome}}
                         </mat-option>
@@ -48,9 +53,7 @@
                 </mat-form-field>
 
 
-                <!-- <mat-form-field class="row col-12">
-            <input matInput placeholder="CEP" name="" [(ngModel)]="pessoa.cep">
-            </mat-form-field> -->
+
 
 
                 <div class="row col">

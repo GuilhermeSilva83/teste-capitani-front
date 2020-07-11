@@ -11,6 +11,10 @@ export class CrudService<TEntity extends IEntity> {
         this.url = environment.apiUrl + this.path;
     }
 
+    protected GetPath(append: string): string {
+        return this.url = environment.apiUrl + this.path + "/" + append;
+    }
+
     public async Save(e: TEntity): Promise<OperationResult<TEntity>> {
         if (e.id) {
             return await this.http.put<OperationResult<TEntity>>(this.url + "/" + e.id.toString(), e).toPromise();

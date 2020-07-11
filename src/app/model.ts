@@ -17,6 +17,7 @@ export class Tipo implements IEntity {
 
 export class Cidade extends Tipo {
     estadoId: 0;
+    estado: Tipo;
     constructor() {
         super();
     }
@@ -31,10 +32,15 @@ export class Pessoa implements IEntity {
     nome = "";
     dataNascimento: Date;
     cpf: string;
+
     email: string;
 
-    cidadeId: number = null;
-    cidade: Cidade = null;
+    cep: string;
+    cidadeId?: number = null;
+    estadoId?: number = null;
+
+    cidade: Cidade;
+
 
     constructor() {
 

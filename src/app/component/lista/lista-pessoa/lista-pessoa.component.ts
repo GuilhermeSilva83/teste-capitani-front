@@ -14,7 +14,7 @@ export class ListaPessoaComponent implements OnInit {
 
   constructor(private service: PessoaService, private router: Router) { }
 
-  campos = ['id', 'nome', 'dataNascimento', 'email', 'cpf', 'actions'];
+  campos = ['id', 'nome', 'dataNascimento', 'email', 'cpf', 'cep', 'cidade', 'estado', 'actions'];
   lista: Pessoa[];
 
   ngOnInit(): void {
