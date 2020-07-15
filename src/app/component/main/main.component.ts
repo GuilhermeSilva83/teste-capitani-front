@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  apiUrl: string;
+  production: boolean;
+
+  constructor() {
+    this.production = environment.production;
+    this.apiUrl = environment.apiUrl;
+  }
+
 
   ngOnInit(): void {
   }
